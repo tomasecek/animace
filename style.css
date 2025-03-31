@@ -1,17 +1,31 @@
- .pexesodesk > .card-item {
+.pexesodesk > .card-item {
     display: inline-block;
     margin: 5px;
     width: 170px;
     height: 170px;
+    perspective: 1000px; 
 }
 
-.card-item > .back, .card-item > .face {
-    border: 1px solid black;
-    box-shadow: -5px 5px 5px #aaa;
+.card-item > .face, .card-item > .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; 
+    transition: transform 1s; 
 }
 
+.card-item > .face {
+    transform: rotateY(-180deg); 
+}
 
-/* skrývání vybraných prvků */
-.card-item.removed {
-    visibility: hidden;
+.card-item > .back {
+    transform: rotateY(0deg); 
+}
+
+.card-item:hover > .face {
+    transform: rotateY(0deg); 
+}
+
+.card-item:hover > .back {
+    transform: rotateY(180deg); 
 }
